@@ -99,7 +99,7 @@ def main():
         </style>
     """, unsafe_allow_html=True)
 
-    st.title("Gestura")
+    st.image("gesture.png", width=400)
 
     if 'tracking' not in st.session_state:
         st.session_state.tracking = initialize_tracking()
