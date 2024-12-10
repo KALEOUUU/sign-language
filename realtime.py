@@ -6,10 +6,10 @@ import streamlit as st
 import time
 from collections import deque
 
-model_dict21 = pickle.load(open("model21.p", 'rb'))
+model_dict21 = pickle.load(open('./model21.p', 'rb'))
 model21 = model_dict21['model']
 
-model_dict42 = pickle.load(open("model42.p", 'rb'))
+model_dict42 = pickle.load(open('./model42.p', 'rb'))
 model42 = model_dict42['model']
 
 def initialize_tracking():
