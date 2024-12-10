@@ -3,3 +3,4 @@ numpy
 opencv-python==4.8.0.76
 mediapipe==0.10.18
 bs4==0.0.2
+scikit-learn==1.2.2
