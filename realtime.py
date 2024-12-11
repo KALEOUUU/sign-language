@@ -146,7 +146,6 @@ def main():
             cv2.waitKey(0)
         cap.release()
         cv2.destroyAllWindows()
-
     mp_hands = mp.solutions.hands
     mp_drawing = mp.solutions.drawing_utils
     mp_drawing_styles = mp.solutions.drawing_styles
