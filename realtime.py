@@ -137,11 +137,15 @@ def main():
         history_placeholder = st.empty()
 
     cap = cv2.VideoCapture(0)
-    
-    # Check if the camera opened successfully
     if not cap.isOpened():
-        st.error("Error: Could not open video stream.")
-        return
+        print("Error: Could not open video stream.")
+    else:
+        ret, frame = cap.read()
+        if ret:
+            cv2.imshow('Frame', frame)
+            cv2.waitKey(0)
+        cap.release()
+        cv2.destroyAllWindows()
 
     mp_hands = mp.solutions.hands
     mp_drawing = mp.solutions.drawing_utils
@@ -164,15 +168,6 @@ def main():
             st.session_state.tracking['detection_history'].append(" ")
 
     while not stop_button:
-        ret, frame = cap.read()
-        
-        # Check if frame is read correctly
-        if not ret:
-            st.error("Error: Could not read frame from video stream.")
-            break
-
-        H, W, _ = frame.shape
-
         current_time = time.time()
         
         # Handle countdown logic
@@ -246,6 +241,9 @@ def main():
         data_aux = []
         x_ = []
         y_ = []
+
+        ret, frame = cap.read()
+        H, W, _ = frame.shape
 
         frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
         results = hands.process(frame_rgb)
