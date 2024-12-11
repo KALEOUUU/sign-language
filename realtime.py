@@ -137,15 +137,6 @@ def main():
         history_placeholder = st.empty()
 
     cap = cv2.VideoCapture(0)
-    if not cap.isOpened():
-        print("Error: Could not open video stream.")
-    else:
-        ret, frame = cap.read()
-        if ret:
-            cv2.imshow('Frame', frame)
-            cv2.waitKey(0)
-        cap.release()
-        cv2.destroyAllWindows()
     mp_hands = mp.solutions.hands
     mp_drawing = mp.solutions.drawing_utils
     mp_drawing_styles = mp.solutions.drawing_styles
@@ -242,7 +233,7 @@ def main():
         y_ = []
 
         ret, frame = cap.read()
-        H, W, _ = frame.shape
+        H, W, _ = frame
 
         frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
         results = hands.process(frame_rgb)
